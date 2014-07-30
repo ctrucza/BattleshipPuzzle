@@ -75,7 +75,7 @@ namespace BattleshipTests
             var b = new Board();
 
             var ship = new Ship(1, new Position(0,10), Orientation.Horizontal);
-            Assert.Throws<InvalidPositionException>(()=>b.AddShip(ship));
+            Assert.Throws<InvalidShipException>(()=>b.AddShip(ship));
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace BattleshipTests
 
             var ship = new Ship(1, new Position(0, 0), Orientation.Horizontal);
             b.AddShip(ship);
-            Assert.Throws<InvalidPositionException>(() => b.AddShip(ship));
+            Assert.Throws<InvalidShipException>(() => b.AddShip(ship));
         }
 
     }

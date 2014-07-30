@@ -5,36 +5,21 @@ namespace Battleship
 {
     public class Board
     {
-        private readonly List<Ship> ships = new List<Ship>();
-
         private const int width = 10;
         private const int height = 10;
 
+        private readonly List<Ship> ships = new List<Ship>();
+
         public void AddShip(Ship ship)
         {
-            ValidateShip(ship);
+            if (!IsValidShip(ship))
+                throw new InvalidShipException();
             ships.Add(ship);
         }
 
-        private void ValidateShip(Ship ship)
+        private bool IsValidShip(Ship ship)
         {
-            if (ship.Holes().Any(hole => !IsValidPosition(hole)))
-            {
-                throw new InvalidPositionException();
-            }
-        }
-
-        public Ship GetShipAt(Position position)
-        {
-            if (!IsOnBoard(position))
-                throw new InvalidPositionException();
-
-            return ships.SingleOrDefault(ship => ship.Contains(position));
-        }
-
-        public bool AllShipsSunken()
-        {
-            return ships.All(s => s.IsSunken());
+            return ship.Holes().All(IsValidPosition);
         }
 
         private bool IsValidPosition(Position hole)
@@ -50,6 +35,19 @@ namespace Battleship
         private bool IsUnoccupied(Position hole)
         {
             return GetShipAt(hole) == null;
+        }
+
+        public Ship GetShipAt(Position position)
+        {
+            if (!IsOnBoard(position))
+                throw new InvalidPositionException();
+
+            return ships.SingleOrDefault(ship => ship.Contains(position));
+        }
+
+        public bool AllShipsSunken()
+        {
+            return ships.All(s => s.IsSunken());
         }
     }
 }

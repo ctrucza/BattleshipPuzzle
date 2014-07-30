@@ -37,6 +37,7 @@
     <Compile Include="BattleshipPuzzle.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="InvalidPositionException.cs" />
+    <Compile Include="InvalidShipException.cs" />
     <Compile Include="Orientation.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
