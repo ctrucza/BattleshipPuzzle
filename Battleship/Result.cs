@@ -4,6 +4,7 @@ namespace Battleship
     {
         Miss,
         Hit,
-        ShipSunk
+        ShipSunk,
+        GameOver
     }
 }

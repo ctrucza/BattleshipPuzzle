@@ -42,10 +42,24 @@ namespace BattleshipTests
         {
             Board b = new Board();
             b.AddShip(new Position(5,5), new Ship(2, new Position(5,5)), Orientation.Horizontal);
+            // we need another ship, or sinking the only one will result in game over
+            b.AddShip(new Position(0,0), new Ship(1, new Position(0,0)), Orientation.Horizontal);
             puzzle = new BattleshipPuzzle(b);
 
             Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5,5)));
             Assert.AreEqual(Result.ShipSunk, puzzle.ShootAt(new Position(5,6)));
+        }
+
+        [Test]
+        public void Sinking_all_ships_ends_the_game()
+        {
+            Board b = new Board();
+            b.AddShip(new Position(5, 5), new Ship(2, new Position(5, 5)), Orientation.Horizontal);
+            puzzle = new BattleshipPuzzle(b);
+
+            Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5, 5)));
+            Assert.AreEqual(Result.GameOver, puzzle.ShootAt(new Position(5, 6)));
+
         }
     }
 }
