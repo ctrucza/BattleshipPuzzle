@@ -14,3 +14,35 @@ Reference: [http://en.wikipedia.org/wiki/Battleship_(puzzle)](http://en.wikipedi
 Goal
 ----
 We need an API, which given a coordinate within the grid, tells the caller whether the game is over (complete fleet is destroyed), whether it was a miss or whether one of the boats was hit and if so, whether the boat sank (all holes have been hit). 
+
+Notes
+-----
+- API outline
+
+		enum Result
+		{
+			Miss,
+			Hit,
+			ShipSank,
+			GameOver
+			// errors: invalid coordinates, game over
+		}
+	
+		class BattleshipPuzzle
+		{
+			public Result ShootAt(int x, int y);
+		}
+	
+- common sense methods
+
+		class BattleshipPuzzle
+		{
+			public void NewGame();
+		}
+
+- design notes:
+	- how do we store the board?
+	- algorithms:
+		- determine if a ship was hit
+		- determine if all ships are sunk
+	- extra feature: generate board 
