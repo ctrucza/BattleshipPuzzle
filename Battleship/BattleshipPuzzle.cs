@@ -4,9 +4,9 @@ namespace Battleship
     {
         private readonly Board board = new Board();
 
-        public BattleshipPuzzle()
+        public BattleshipPuzzle(Board board)
         {
-            board.AddShip(new Position(0,0), 1, Orientation.Horizontal);
+            this.board = board;
         }
 
         public Result ShootAt(Position position)

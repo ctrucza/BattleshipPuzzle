@@ -67,3 +67,7 @@ Tentative interface:
 		public bool IsSunk();
 	}
 
+Interesting cases when shooting a ship
+---
+- what if the ship was sunk already? Should it return Hit? Miss (as there is no ships there anymore)? Error?
+- what if the ship was already hit in that position? Probably Hit is the correct answer. 

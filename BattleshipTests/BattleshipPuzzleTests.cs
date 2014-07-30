@@ -11,7 +11,16 @@ namespace BattleshipTests
         [SetUp]
         public void CreateNewPuzzle()
         {
-            puzzle = new BattleshipPuzzle();
+            var board = CreateBoard();
+            puzzle = new BattleshipPuzzle(board);
+        }
+
+        private static Board CreateBoard()
+        {
+            var board = new Board();
+            var position = new Position(0, 0);
+            board.AddShip(position, 1, Orientation.Horizontal);
+            return board;
         }
 
         [Test]
