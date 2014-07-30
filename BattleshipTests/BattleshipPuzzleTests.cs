@@ -4,7 +4,7 @@ using Battleship;
 namespace BattleshipTests
 {
     [TestFixture]
-    class BattleshipTests
+    class BattleshipPuzzleTests
     {
         [Test]
         public void Test_usage()
