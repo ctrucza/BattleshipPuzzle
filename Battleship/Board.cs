@@ -15,6 +15,7 @@ namespace Battleship
         {
             ships.Add(ship);
 
+            // we make it a list so we don't enumerate it twice
             List<Position> holes = ship.Holes().ToList();
 
             if (holes.Any(hole => !IsValidPosition(hole)))
@@ -26,11 +27,6 @@ namespace Battleship
             {
                 board[hole] = ship;
             }
-        }
-
-        private static bool IsValidPosition(Position hole)
-        {
-            return hole.X >= 0 && hole.X < height && hole.Y >= 0 && hole.Y < width;
         }
 
         public Ship GetShipAt(Position position)
@@ -46,6 +42,11 @@ namespace Battleship
         public bool AllShipsSunken()
         {
             return ships.All(s => s.IsSunken());
+        }
+
+        private static bool IsValidPosition(Position hole)
+        {
+            return hole.X >= 0 && hole.X < height && hole.Y >= 0 && hole.Y < width;
         }
     }
 }
