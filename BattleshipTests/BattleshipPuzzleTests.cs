@@ -4,7 +4,7 @@ using Battleship;
 namespace BattleshipTests
 {
     [TestFixture]
-    internal class BattleshipPuzzleTests
+    public class BattleshipPuzzleTests
     {
         private static BattleshipPuzzle puzzle;
 
