@@ -51,5 +51,10 @@ namespace Battleship
         {
             return holes.All(p => p.Value == HoleStatus.Hit);
         }
+
+        public bool Contains(Position position)
+        {
+            return holes.ContainsKey(position);
+        }
     }
 }

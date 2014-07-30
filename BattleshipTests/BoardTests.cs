@@ -78,5 +78,15 @@ namespace BattleshipTests
             Assert.Throws<InvalidPositionException>(()=>b.AddShip(ship));
         }
 
+        [Test]
+        public void Cannot_add_overlapping_ships()
+        {
+            var b = new Board();
+
+            var ship = new Ship(1, new Position(0, 0), Orientation.Horizontal);
+            b.AddShip(ship);
+            Assert.Throws<InvalidPositionException>(() => b.AddShip(ship));
+        }
+
     }
 }

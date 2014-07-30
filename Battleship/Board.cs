@@ -5,7 +5,6 @@ namespace Battleship
 {
     public class Board
     {
-        private readonly Dictionary<Position, Ship> board = new Dictionary<Position, Ship>(); 
         private readonly List<Ship> ships = new List<Ship>();
 
         private const int width = 10;
@@ -13,30 +12,24 @@ namespace Battleship
 
         public void AddShip(Ship ship)
         {
+            ValidateShip(ship);
             ships.Add(ship);
+        }
 
-            // we make it a list so we don't enumerate it twice
-            List<Position> holes = ship.Holes().ToList();
-
-            if (holes.Any(hole => !IsValidPosition(hole)))
+        private void ValidateShip(Ship ship)
+        {
+            if (ship.Holes().Any(hole => !IsValidPosition(hole)))
             {
                 throw new InvalidPositionException();
-            }
-
-            foreach (Position hole in holes)
-            {
-                board[hole] = ship;
             }
         }
 
         public Ship GetShipAt(Position position)
         {
-            if (!IsValidPosition(position))
+            if (!IsOnBoard(position))
                 throw new InvalidPositionException();
 
-            if (board.ContainsKey(position))
-                return board[position];
-            return null;
+            return ships.SingleOrDefault(ship => ship.Contains(position));
         }
 
         public bool AllShipsSunken()
@@ -44,9 +37,19 @@ namespace Battleship
             return ships.All(s => s.IsSunken());
         }
 
-        private static bool IsValidPosition(Position hole)
+        private bool IsValidPosition(Position hole)
+        {
+            return IsOnBoard(hole) && IsUnoccupied(hole);
+        }
+
+        private static bool IsOnBoard(Position hole)
         {
             return hole.X >= 0 && hole.X < height && hole.Y >= 0 && hole.Y < width;
+        }
+
+        private bool IsUnoccupied(Position hole)
+        {
+            return GetShipAt(hole) == null;
         }
     }
 }
