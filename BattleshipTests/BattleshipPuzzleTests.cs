@@ -19,7 +19,7 @@ namespace BattleshipTests
         {
             var board = new Board();
             var position = new Position(0, 0);
-            board.AddShip(position, new Ship(1), Orientation.Horizontal);
+            board.AddShip(position, new Ship(1, position), Orientation.Horizontal);
             return board;
         }
 
@@ -42,7 +42,7 @@ namespace BattleshipTests
         public void Shooting_all_holes_of_a_ship_sinks_it()
         {
             Board b = new Board();
-            b.AddShip(new Position(5,5), new Ship(2), Orientation.Horizontal);
+            b.AddShip(new Position(5,5), new Ship(2, new Position(5,5)), Orientation.Horizontal);
             puzzle = new BattleshipPuzzle(b);
 
             Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5,5)));
