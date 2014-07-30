@@ -10,7 +10,7 @@ namespace BattleshipTests
         public void Test_usage()
         {
             Board b = new Board();
-            b.AddShip(new Position(0,0));
+            b.AddShip(new Position(0,0), 1);
         }
 
         [Test]
@@ -18,7 +18,7 @@ namespace BattleshipTests
         {
             Board b = new Board();
             var position = new Position(0,0);
-            b.AddShip(position);
+            b.AddShip(position,1);
 
             Assert.IsTrue(b.IsThereAShipAt(position));
         }
@@ -31,9 +31,20 @@ namespace BattleshipTests
 
             Assert.IsFalse(b.IsThereAShipAt(position));
 
-            b.AddShip(position);
+            b.AddShip(position,1);
             Assert.IsTrue(b.IsThereAShipAt(position));
         }
+
+        [Test]
+        public void Can_add_large_ships()
+        {
+            Board b = new Board();
+            b.AddShip(new Position(0,0), 2);
+
+            Assert.IsTrue(b.IsThereAShipAt(new Position(0,0)));
+            Assert.IsTrue(b.IsThereAShipAt(new Position(0,1)));
+        }
+
 
     }
 }
