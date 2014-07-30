@@ -2,7 +2,7 @@
 {
     public class Board
     {
-        private int[,] board = new int[10, 10];
+        private readonly int[,] board = new int[10, 10];
 
         public void AddShip(int x, int y, int size)
         {
