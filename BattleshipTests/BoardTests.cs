@@ -10,7 +10,7 @@ namespace BattleshipTests
         public void Test_usage()
         {
             Board b = new Board();
-            b.AddShip(new Ship(1, new Position(0,0)));
+            b.AddShip(new Ship(1, new Position(0,0), Orientation.Horizontal));
         }
 
         [Test]
@@ -18,7 +18,7 @@ namespace BattleshipTests
         {
             Board b = new Board();
             var position = new Position(0,0);
-            b.AddShip(new Ship(1, position));
+            b.AddShip(new Ship(1, position, Orientation.Horizontal));
 
             Assert.IsNotNull(b.GetShipAt(position));
         }
@@ -31,7 +31,7 @@ namespace BattleshipTests
 
             Assert.IsNull(b.GetShipAt(position));
 
-            b.AddShip(new Ship(1, position));
+            b.AddShip(new Ship(1, position, Orientation.Horizontal));
             Assert.IsNotNull(b.GetShipAt(position));
         }
 
@@ -39,7 +39,7 @@ namespace BattleshipTests
         public void Can_add_large_ships()
         {
             Board b = new Board();
-            b.AddShip(new Ship(2, new Position(0,0)));
+            b.AddShip(new Ship(2, new Position(0,0), Orientation.Horizontal));
 
             Assert.IsNotNull(b.GetShipAt(new Position(0,0)));
             Assert.IsNotNull(b.GetShipAt(new Position(0,1)));
@@ -63,7 +63,7 @@ namespace BattleshipTests
 
             Assert.IsNull(b.GetShipAt(position));
 
-            b.AddShip(new Ship(1, position) );
+            b.AddShip(new Ship(1, position, Orientation.Horizontal) );
             Ship ship = b.GetShipAt(position);
 
             Assert.IsNotNull(ship);

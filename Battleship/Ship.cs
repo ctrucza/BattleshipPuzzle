@@ -7,7 +7,7 @@ namespace Battleship
     {
         private readonly Dictionary<Position, bool> holes = new Dictionary<Position, bool>();
 
-        public Ship(int size, Position position, Orientation orientation = Orientation.Horizontal)
+        public Ship(int size, Position position, Orientation orientation)
         {
             int dx = 0;
             int dy = 0;

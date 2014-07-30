@@ -19,7 +19,7 @@ namespace BattleshipTests
         {
             var board = new Board();
             var position = new Position(0, 0);
-            board.AddShip(new Ship(2, position));
+            board.AddShip(new Ship(2, position, Orientation.Horizontal));
             return board;
         }
 
@@ -41,9 +41,9 @@ namespace BattleshipTests
         public void Shooting_all_holes_of_a_ship_sinks_it()
         {
             Board b = new Board();
-            b.AddShip(new Ship(2, new Position(5,5)));
+            b.AddShip(new Ship(2, new Position(5,5), Orientation.Horizontal));
             // we need another ship, or sinking the only one will result in game over
-            b.AddShip(new Ship(1, new Position(0,0)));
+            b.AddShip(new Ship(1, new Position(0,0), Orientation.Horizontal));
             puzzle = new BattleshipPuzzle(b);
 
             Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5,5)));
@@ -54,7 +54,7 @@ namespace BattleshipTests
         public void Sinking_all_ships_ends_the_game()
         {
             Board b = new Board();
-            b.AddShip(new Ship(2, new Position(5, 5)));
+            b.AddShip(new Ship(2, new Position(5, 5), Orientation.Horizontal));
             puzzle = new BattleshipPuzzle(b);
 
             Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5, 5)));
