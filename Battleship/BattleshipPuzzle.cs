@@ -9,21 +9,9 @@ namespace Battleship
             this.board = board;
         }
 
-        public Result ShootAt(Position position)
+        public Board Board
         {
-            Ship ship = board.GetShipAt(position);
-
-            if (ship == null)
-                return Result.Miss;
-
-            ship.HitAt(position);
-            if (!ship.IsSunken())
-                return Result.Hit;
-
-            if (!board.AllShipsSunken())
-                return Result.ShipSunk;
-
-            return Result.GameOver;
+            get { return board; }
         }
     }
 }

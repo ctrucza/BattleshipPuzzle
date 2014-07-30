@@ -26,14 +26,14 @@ namespace BattleshipTests
         [Test]
         public void Shooting_at_a_ship_hits_it()
         {
-            Result result = puzzle.ShootAt(new Position(0,0));
+            Result result = puzzle.Board.ShootAt(new Position(0,0));
             Assert.AreEqual(Result.Hit, result);
         }
 
         [Test]
         public void Shooting_in_water_misses()
         {
-            Result result = puzzle.ShootAt(new Position(0,2));
+            Result result = puzzle.Board.ShootAt(new Position(0,2));
             Assert.AreEqual(Result.Miss, result);
         }
 
@@ -46,8 +46,8 @@ namespace BattleshipTests
             b.AddShip(new Ship(1, new Position(0,0), Orientation.Horizontal));
             puzzle = new BattleshipPuzzle(b);
 
-            Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5,5)));
-            Assert.AreEqual(Result.ShipSunk, puzzle.ShootAt(new Position(5,6)));
+            Assert.AreEqual(Result.Hit, puzzle.Board.ShootAt(new Position(5,5)));
+            Assert.AreEqual(Result.ShipSunk, puzzle.Board.ShootAt(new Position(5,6)));
         }
 
         [Test]
@@ -57,8 +57,8 @@ namespace BattleshipTests
             b.AddShip(new Ship(2, new Position(5, 5), Orientation.Horizontal));
             puzzle = new BattleshipPuzzle(b);
 
-            Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5, 5)));
-            Assert.AreEqual(Result.GameOver, puzzle.ShootAt(new Position(5, 6)));
+            Assert.AreEqual(Result.Hit, puzzle.Board.ShootAt(new Position(5, 5)));
+            Assert.AreEqual(Result.GameOver, puzzle.Board.ShootAt(new Position(5, 6)));
 
         }
     }
