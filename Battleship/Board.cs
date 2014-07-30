@@ -8,7 +8,7 @@ namespace Battleship
         private readonly Ship[,] board = new Ship[10, 10];
         private readonly List<Ship> ships = new List<Ship>(); 
 
-        public void AddShip(Position position, Ship ship, Orientation orientation)
+        public void AddShip(Ship ship)
         {
             ships.Add(ship);
             foreach (Position hole in ship.Holes())
