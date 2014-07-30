@@ -5,7 +5,7 @@ Context
 -------
 This problem is based on the battleship game. The battleship ground is a 10x10 grid.
 
-A fleet is composed of a carrier (5 holes), battleship (4 holes), 1 destroyer (3 holes), 1 submarine (3 holes) and 1 small assault chip.
+A fleet is composed of a carrier (5 holes), battleship (4 holes), 1 destroyer (3 holes), 1 submarine (3 holes) and 1 small assault ship.
 
 A user places his fleet on the grid which remains fixed during the life of the game.
 
