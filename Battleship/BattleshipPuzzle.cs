@@ -6,7 +6,7 @@ namespace Battleship
 
         public BattleshipPuzzle()
         {
-            board.AddShip(new Position(0,0), 1);
+            board.AddShip(new Position(0,0), 1, Orientation.Horizontal);
         }
 
         public Result ShootAt(Position position)

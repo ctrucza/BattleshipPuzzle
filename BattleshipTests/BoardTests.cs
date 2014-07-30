@@ -10,7 +10,7 @@ namespace BattleshipTests
         public void Test_usage()
         {
             Board b = new Board();
-            b.AddShip(new Position(0,0), 1);
+            b.AddShip(new Position(0,0), 1, Orientation.Horizontal);
         }
 
         [Test]
@@ -18,7 +18,7 @@ namespace BattleshipTests
         {
             Board b = new Board();
             var position = new Position(0,0);
-            b.AddShip(position,1);
+            b.AddShip(position,1, Orientation.Horizontal);
 
             Assert.IsTrue(b.IsThereAShipAt(position));
         }
@@ -31,7 +31,7 @@ namespace BattleshipTests
 
             Assert.IsFalse(b.IsThereAShipAt(position));
 
-            b.AddShip(position,1);
+            b.AddShip(position,1, Orientation.Horizontal);
             Assert.IsTrue(b.IsThereAShipAt(position));
         }
 
@@ -39,12 +39,21 @@ namespace BattleshipTests
         public void Can_add_large_ships()
         {
             Board b = new Board();
-            b.AddShip(new Position(0,0), 2);
+            b.AddShip(new Position(0,0), 2, Orientation.Horizontal);
 
             Assert.IsTrue(b.IsThereAShipAt(new Position(0,0)));
             Assert.IsTrue(b.IsThereAShipAt(new Position(0,1)));
         }
 
+        [Test]
+        public void Can_add_vertical_ships()
+        {
+            Board b = new Board();
+            b.AddShip(new Position(0, 0), 2, Orientation.Vertical);
 
+            Assert.IsTrue(b.IsThereAShipAt(new Position(0, 0)));
+            Assert.IsTrue(b.IsThereAShipAt(new Position(1, 0)));
+
+        }
     }
 }
