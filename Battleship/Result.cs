@@ -5,6 +5,7 @@ namespace Battleship
         Miss,
         Hit,
         ShipSunk,
-        GameOver
+        GameOver,
+        ShipAlreadySunken
     }
 }
