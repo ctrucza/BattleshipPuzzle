@@ -16,7 +16,7 @@ namespace Battleship
             if (ship == null)
                 return Result.Miss;
 
-            ship.HitAt(position);
+            ship.Hit(position);
             if (!ship.IsSunken())
                 return Result.Hit;
 

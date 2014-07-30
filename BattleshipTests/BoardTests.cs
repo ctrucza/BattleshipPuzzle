@@ -9,14 +9,14 @@ namespace BattleshipTests
         [Test]
         public void Test_usage()
         {
-            Board b = new Board();
+            var b = new Board();
             b.AddShip(new Ship(1, new Position(0,0), Orientation.Horizontal));
         }
 
         [Test]
         public void Can_find_ship_at_location()
         {
-            Board b = new Board();
+            var b = new Board();
             var position = new Position(0,0);
             b.AddShip(new Ship(1, position, Orientation.Horizontal));
 
@@ -26,7 +26,7 @@ namespace BattleshipTests
         [Test]
         public void Ship_is_added_correctly()
         {
-            Board b = new Board();
+            var b = new Board();
             var position = new Position(0,0);
 
             Assert.IsNull(b.GetShipAt(position));
@@ -38,7 +38,7 @@ namespace BattleshipTests
         [Test]
         public void Can_add_large_ships()
         {
-            Board b = new Board();
+            var b = new Board();
             b.AddShip(new Ship(2, new Position(0,0), Orientation.Horizontal));
 
             Assert.IsNotNull(b.GetShipAt(new Position(0,0)));
@@ -48,7 +48,7 @@ namespace BattleshipTests
         [Test]
         public void Can_add_vertical_ships()
         {
-            Board b = new Board();
+            var b = new Board();
             b.AddShip(new Ship(2, new Position(0,0), Orientation.Vertical));
 
             Assert.IsNotNull(b.GetShipAt(new Position(0, 0)));
@@ -58,7 +58,7 @@ namespace BattleshipTests
         [Test]
         public void Can_retrieve_ships()
         {
-            Board b = new Board();
+            var b = new Board();
             var position = new Position(0,0);
 
             Assert.IsNull(b.GetShipAt(position));

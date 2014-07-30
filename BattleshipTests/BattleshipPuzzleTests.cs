@@ -40,7 +40,7 @@ namespace BattleshipTests
         [Test]
         public void Shooting_all_holes_of_a_ship_sinks_it()
         {
-            Board b = new Board();
+            var b = new Board();
             b.AddShip(new Ship(2, new Position(5,5), Orientation.Horizontal));
             // we need another ship, or sinking the only one will result in game over
             b.AddShip(new Ship(1, new Position(0,0), Orientation.Horizontal));
@@ -53,7 +53,7 @@ namespace BattleshipTests
         [Test]
         public void Sinking_all_ships_ends_the_game()
         {
-            Board b = new Board();
+            var b = new Board();
             b.AddShip(new Ship(2, new Position(5, 5), Orientation.Horizontal));
             puzzle = new BattleshipPuzzle(b);
 

@@ -5,7 +5,7 @@ namespace Battleship
 {
     public class Board
     {
-        private readonly Ship[,] board = new Ship[10, 10];
+        private readonly Dictionary<Position, Ship> board = new Dictionary<Position, Ship>(); 
         private readonly List<Ship> ships = new List<Ship>(); 
 
         public void AddShip(Ship ship)
@@ -13,13 +13,15 @@ namespace Battleship
             ships.Add(ship);
             foreach (Position hole in ship.Holes())
             {
-                board[hole.x, hole.y] = ship;
+                board[hole] = ship;
             }
         }
 
         public Ship GetShipAt(Position position)
         {
-            return board[position.x, position.y];
+            if (board.ContainsKey(position))
+                return board[position];
+            return null;
         }
 
         public bool AllShipsSunken()

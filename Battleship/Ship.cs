@@ -23,21 +23,18 @@ namespace Battleship
 
             for (int i = 0; i < size; ++i)
             {
-                int x = position.x + i * dx;
-                int y = position.y + i * dy;
+                int x = position.X + i * dx;
+                int y = position.Y + i * dy;
                 holes.Add(new Position(x, y), true);
             }
         }
 
         public IEnumerable<Position> Holes()
         {
-            foreach (var hole in holes)
-            {
-                yield return hole.Key;
-            }
-        } 
+            return holes.Select(hole => hole.Key);
+        }
 
-        public void HitAt(Position position)
+        public void Hit(Position position)
         {
             if (!holes.ContainsKey(position))
                 throw new InvalidHitPositionException();

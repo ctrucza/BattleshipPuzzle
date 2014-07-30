@@ -2,13 +2,13 @@
 {
     public class Position
     {
-        public int x;
-        public int y;
+        public readonly int X;
+        public readonly int Y;
 
         public Position(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            X = x;
+            Y = y;
         }
 
         public override bool Equals(object obj)
@@ -16,12 +16,12 @@
             Position other = obj as Position;
             if (other == null)
                 return false;
-            return (x == other.x) && (y == other.y);
+            return (X == other.X) && (Y == other.Y);
         }
 
         public override int GetHashCode()
         {
-            return x + y;
+            return X + Y;
         }
     }
 }
