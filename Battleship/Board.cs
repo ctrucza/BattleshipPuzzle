@@ -24,11 +24,6 @@
             }
         }
 
-        public bool IsThereAShipAt(Position position)
-        {
-            return (board[position.x, position.y] != null);
-        }
-
         public Ship GetShipAt(Position position)
         {
             return board[position.x, position.y];
