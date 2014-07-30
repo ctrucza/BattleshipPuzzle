@@ -4,14 +4,14 @@
     {
         private readonly int[,] board = new int[10, 10];
 
-        public void AddShip(int x, int y)
+        public void AddShip(Position position)
         {
-            board[x, y] = 1;
+            board[position.x, position.y] = 1;
         }
 
-        public bool IsThereAShipAt(int x, int y)
+        public bool IsThereAShipAt(Position position)
         {
-            return (board[x, y] == 1);
+            return (board[position.x, position.y] == 1);
         }
     }
 }

@@ -6,12 +6,12 @@ namespace Battleship
 
         public BattleshipPuzzle()
         {
-            board.AddShip(0, 0);
+            board.AddShip(new Position(0,0));
         }
 
-        public Result ShootAt(int x, int y)
+        public Result ShootAt(Position position)
         {
-            if (board.IsThereAShipAt(x,y))
+            if (board.IsThereAShipAt(position))
                 return Result.Hit;
             else
                 return Result.Miss;
