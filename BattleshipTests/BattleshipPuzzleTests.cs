@@ -36,5 +36,17 @@ namespace BattleshipTests
             Result result = puzzle.ShootAt(new Position(0,1));
             Assert.AreEqual(Result.Miss, result);
         }
+
+        [Ignore]
+        [Test]
+        public void Shooting_all_holes_of_a_ship_sinks_it()
+        {
+            Board b = new Board();
+            b.AddShip(new Position(5,5), 2, Orientation.Horizontal);
+            puzzle = new BattleshipPuzzle(b);
+
+            Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5,5)));
+            Assert.AreEqual(Result.ShipSunk, puzzle.ShootAt(new Position(5,6)));
+        }
     }
 }

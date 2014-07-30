@@ -53,6 +53,20 @@ namespace BattleshipTests
 
             Assert.IsTrue(b.IsThereAShipAt(new Position(0, 0)));
             Assert.IsTrue(b.IsThereAShipAt(new Position(1, 0)));
+        }
+
+        [Test]
+        public void Can_retrieve_ships()
+        {
+            Board b = new Board();
+            var position = new Position(0,0);
+
+            Assert.IsNull(b.GetShipAt(position));
+
+            b.AddShip(position, 1, Orientation.Horizontal );
+            Ship ship = b.GetShipAt(position);
+
+            Assert.IsNotNull(ship);
 
         }
     }
