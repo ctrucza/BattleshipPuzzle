@@ -10,25 +10,24 @@ namespace BattleshipTests
         public void Test_usage()
         {
             Board b = new Board();
-            b.AddShip(0, 0, 1);
+            b.AddShip(0, 0);
         }
 
         [Test]
         public void Can_find_ship_at_location()
         {
             Board b = new Board();
-            b.AddShip(0,0,1);
+            b.AddShip(0,0);
             Assert.IsTrue(b.IsThereAShipAt(0,0));
-            Assert.IsFalse(b.IsThereAShipAt(1,1));
         }
 
         [Test]
-        public void Ship_can_be_added_correctly()
+        public void Ship_is_added_correctly()
         {
             Board b = new Board();
-            Assert.IsFalse(b.IsThereAShipAt(1,1));
-            b.AddShip(1,1,1);
-            Assert.IsTrue(b.IsThereAShipAt(1,1));
+            Assert.IsFalse(b.IsThereAShipAt(0,0));
+            b.AddShip(0,0);
+            Assert.IsTrue(b.IsThereAShipAt(0,0));
         }
 
     }
