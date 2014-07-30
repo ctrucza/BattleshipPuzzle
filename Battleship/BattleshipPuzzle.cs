@@ -11,10 +11,10 @@ namespace Battleship
 
         public Result ShootAt(Position position)
         {
-            if (board.IsThereAShipAt(position))
-                return Result.Hit;
-            else
+            Ship ship = board.GetShipAt(position);
+            if (ship == null)
                 return Result.Miss;
+            return Result.Hit;
         }
     }
 }
