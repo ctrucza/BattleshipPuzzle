@@ -35,6 +35,9 @@ namespace Battleship
 
         public Ship GetShipAt(Position position)
         {
+            if (!IsValidPosition(position))
+                throw new InvalidPositionException();
+
             if (board.ContainsKey(position))
                 return board[position];
             return null;

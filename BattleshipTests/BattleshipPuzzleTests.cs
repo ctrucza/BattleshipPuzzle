@@ -59,7 +59,12 @@ namespace BattleshipTests
 
             Assert.AreEqual(Result.Hit, puzzle.ShootAt(new Position(5, 5)));
             Assert.AreEqual(Result.GameOver, puzzle.ShootAt(new Position(5, 6)));
+        }
 
+        [Test]
+        public void Shooting_outside_the_board_throws()
+        {
+            Assert.Throws<InvalidPositionException>(() => puzzle.ShootAt(new Position(0, 10)));
         }
     }
 }
