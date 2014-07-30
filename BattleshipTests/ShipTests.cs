@@ -17,7 +17,7 @@ namespace BattleshipTests
         public void Hitting_near_a_ship_throws()
         {
             Ship ship = new Ship(1, new Position(0,0), Orientation.Horizontal);
-            Assert.Throws<InvalidHitPositionException>(()=>ship.Hit(new Position(0, 1)));
+            Assert.Throws<InvalidPositionException>(()=>ship.Hit(new Position(0, 1)));
         }
 
         [Test]

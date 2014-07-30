@@ -2,7 +2,7 @@ namespace Battleship
 {
     public class BattleshipPuzzle
     {
-        private readonly Board board = new Board();
+        private readonly Board board;
 
         public BattleshipPuzzle(Board board)
         {

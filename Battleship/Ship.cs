@@ -37,7 +37,7 @@ namespace Battleship
         public void Hit(Position position)
         {
             if (!holes.ContainsKey(position))
-                throw new InvalidHitPositionException();
+                throw new InvalidPositionException();
             holes[position] = false;
         }
 

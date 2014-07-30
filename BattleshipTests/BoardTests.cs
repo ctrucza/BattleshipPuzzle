@@ -67,7 +67,16 @@ namespace BattleshipTests
             Ship ship = b.GetShipAt(position);
 
             Assert.IsNotNull(ship);
-
         }
+
+        [Test]
+        public void Cannot_add_ship_outside_the_board()
+        {
+            var b = new Board();
+
+            var ship = new Ship(1, new Position(0,10), Orientation.Horizontal);
+            Assert.Throws<InvalidPositionException>(()=>b.AddShip(ship));
+        }
+
     }
 }
