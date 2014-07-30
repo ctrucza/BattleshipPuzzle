@@ -4,9 +4,8 @@
     {
         private readonly Ship[,] board = new Ship[10, 10];
 
-        public void AddShip(Position position, int size, Orientation orientation)
+        public void AddShip(Position position, Ship ship, Orientation orientation)
         {
-            Ship s = new Ship();
             int dx = 0;
             int dy = 0;
 
@@ -19,9 +18,9 @@
                 dx = 1;
             }
 
-            for (int i = 0; i < size; ++i)
+            for (int i = 0; i < ship.Size; ++i)
             {
-                board[position.x+i*dx, position.y+i*dy] = s;
+                board[position.x+i*dx, position.y+i*dy] = ship;
             }
         }
 
