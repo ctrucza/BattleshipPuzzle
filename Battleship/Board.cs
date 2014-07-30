@@ -26,22 +26,5 @@ namespace Battleship
         {
             return ships.All(s => s.IsSunken());
         }
-
-        public Result ShootAt(Position position)
-        {
-            Ship ship = GetShipAt(position);
-
-            if (ship == null)
-                return Result.Miss;
-
-            ship.HitAt(position);
-            if (!ship.IsSunken())
-                return Result.Hit;
-
-            if (!AllShipsSunken())
-                return Result.ShipSunk;
-
-            return Result.GameOver;
-        }
     }
 }
