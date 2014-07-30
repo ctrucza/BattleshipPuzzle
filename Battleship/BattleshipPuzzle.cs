@@ -2,8 +2,9 @@ namespace Battleship
 {
     public class BattleshipPuzzle
     {
-        public void ShootAt(int x, int y)
+        public Result ShootAt(int x, int y)
         {
+            return Result.Miss;
         }
     }
 }
