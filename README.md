@@ -47,3 +47,23 @@ Notes
 		- determine if all ships are sunk
 	- extra feature: generate board
 
+Representing the board
+---
+Building and representing a board is an interesting problem in itself. It might worth creating a separate class for it.
+
+Tentative interface:
+
+	public class Board
+	{
+		public AddShip(Point origin, Ship ship);
+		public Ship ShipAt(int x, int y);
+		public bool AreAllShipsSunk();
+	}
+
+	public class Ship
+	{
+		public Ship(Size size, Orientation orientation);
+		public void Hit(Point location);
+		public bool IsSunk();
+	}
+
