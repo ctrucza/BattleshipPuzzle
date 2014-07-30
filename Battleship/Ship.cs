@@ -5,7 +5,13 @@ namespace Battleship
 {
     public class Ship
     {
-        private readonly Dictionary<Position, bool> holes = new Dictionary<Position, bool>();
+        private enum HoleStatus
+        {
+            Healthy,
+            Hit
+        }
+
+        private readonly Dictionary<Position, HoleStatus> holes = new Dictionary<Position, HoleStatus>();
 
         public Ship(int size, Position position, Orientation orientation)
         {
@@ -25,7 +31,7 @@ namespace Battleship
             {
                 int x = position.X + i * dx;
                 int y = position.Y + i * dy;
-                holes.Add(new Position(x, y), true);
+                holes.Add(new Position(x, y), HoleStatus.Healthy);
             }
         }
 
@@ -38,12 +44,12 @@ namespace Battleship
         {
             if (!holes.ContainsKey(position))
                 throw new InvalidPositionException();
-            holes[position] = false;
+            holes[position] = HoleStatus.Hit;
         }
 
         public bool IsSunken()
         {
-            return !holes.Any(p => p.Value);
+            return holes.All(p => p.Value == HoleStatus.Hit);
         }
     }
 }
