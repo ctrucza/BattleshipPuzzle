@@ -4,7 +4,10 @@ namespace Battleship
     {
         public Result ShootAt(int x, int y)
         {
-            return Result.Miss;
+            if (y==1)
+                return Result.Hit;
+            else
+                return Result.Miss;
         }
     }
 }

@@ -20,5 +20,14 @@ namespace BattleshipTests
             var result = battleship.ShootAt(0, 0);
             Assert.AreEqual(Result.Miss, result);
         }
+
+        [Test]
+        public void Shooting_at_a_ship_hits_it()
+        {
+            var battleship = new BattleshipPuzzle();
+            var result = battleship.ShootAt(0, 1);
+            Assert.AreEqual(Result.Hit, result);
+        }
+
     }
 }

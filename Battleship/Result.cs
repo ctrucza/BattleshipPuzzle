@@ -2,6 +2,7 @@ namespace Battleship
 {
     public enum Result
     {
-        Miss
+        Miss,
+        Hit
     }
 }
