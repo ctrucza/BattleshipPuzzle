@@ -49,7 +49,7 @@ namespace BattleshipTests
         public void Can_add_vertical_ships()
         {
             Board b = new Board();
-            b.AddShip(new Position(0, 0), new Ship(2, new Position(0,0)), Orientation.Vertical);
+            b.AddShip(new Position(0, 0), new Ship(2, new Position(0,0), Orientation.Vertical), Orientation.Vertical);
 
             Assert.IsNotNull(b.GetShipAt(new Position(0, 0)));
             Assert.IsNotNull(b.GetShipAt(new Position(1, 0)));

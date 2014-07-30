@@ -5,15 +5,37 @@ namespace Battleship
 {
     public class Ship
     {
-        public int Size;
-        private Dictionary<Position, bool> holes = new Dictionary<Position, bool>();
+        private readonly Dictionary<Position, bool> holes = new Dictionary<Position, bool>();
 
-        public Ship(int size, Position position)
+        public Ship(int size, Position position, Orientation orientation = Orientation.Horizontal)
         {
-            for(int i = 0; i < size; ++i)
-                holes.Add(new Position(position.x, position.y+i), true);
-            Size = size;
+            int dx = 0;
+            int dy = 0;
+
+            if (orientation == Orientation.Horizontal)
+            {
+                dy = 1;
+            }
+            else
+            {
+                dx = 1;
+            }
+
+            for (int i = 0; i < size; ++i)
+            {
+                int x = position.x + i * dx;
+                int y = position.y + i * dy;
+                holes.Add(new Position(x, y), true);
+            }
         }
+
+        public IEnumerable<Position> Holes()
+        {
+            foreach (var hole in holes)
+            {
+                yield return hole.Key;
+            }
+        } 
 
         public void HitAt(Position position)
         {
